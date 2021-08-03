@@ -1,0 +1,6 @@
+{
+    "mongoURI": "mongodb+srv://courseUser:coursePassword@devconnector.2edhc.mongodb.net/devconnector?retryWrites=true&w=majority",
+    "jwtSecret": "shhhecret",
+    "githubClientId": "572c6fcf7e55be1dde68",
+    "githubSecret": "e3b1bda9ebc393cb2b6be4198be98f07ed8bf4aa"
+}

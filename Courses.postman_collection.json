@@ -1,0 +1,765 @@
+{
+	"info": {
+		"_postman_id": "b7060569-c6b8-4572-85e2-bac33ba882bc",
+		"name": "Courses",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "MERN stack front to back",
+			"item": [
+				{
+					"name": "Users & Auth",
+					"item": [
+						{
+							"name": "/users",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"test 2\",\r\n    \"email\": \"test2@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/users",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var data = pm.response.json();\r",
+											"pm.globals.set(\"token\", data.token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"test2@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/auth",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"auth"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/login Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var data = pm.response.json();\r",
+											"pm.globals.set(\"token\", data.token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"emmaz.086@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/auth",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"auth"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Profiles",
+					"item": [
+						{
+							"name": "/profile/me",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "x-auth-token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/api/profile/me",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"me"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/profile",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "x-auth-token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/profile",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/profile/user/:user_id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "x-auth-token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/profile/user/60aaf30afac6980d1c55e9d9",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"user",
+										"60aaf30afac6980d1c55e9d9"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/profile",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "x-auth-token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"company\": \"test2\",\r\n    \"status\":\"Developer\",\r\n    \"skills\":\"HTML, CSS, NODE, EXPRESS, MONGODB\",\r\n    \"website\":\"website\",\r\n    \"location\":\"tandil\",\r\n    \"bio\":\"i am a test2\",\r\n    \"githubusername\": \"emmaz\",\r\n    \"twitter\": \"twitter\",\r\n    \"facebook\": \"facebook\",\r\n    \"youtube\": \"youtube\",\r\n    \"experience\": []\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/profile",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/profile",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "x-auth-token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"company\": \"test1\",\r\n    \"status\":\"Developer\",\r\n    \"skills\":\"HTML, CSS, NODE, EXPRESS, MONGODB\",\r\n    \"website\":\"website\",\r\n    \"location\":\"test\",\r\n    \"bio\":\"i am a test2\",\r\n    \"githubusername\": \"test\",\r\n    \"twitter\": \"twitter\",\r\n    \"facebook\": \"facebook\",\r\n    \"youtube\": \"youtube\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/profile",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/profile/experience",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "x-auth-token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"developer\",\r\n    \"company\": \"it\",\r\n    \"location\": \"barcelona\",\r\n    \"from\": \"1-5-2005\",\r\n    \"to\": \"1-7-2009\",\r\n    \"description\": \"a lot more\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/profile/experience",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"experience"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/profile/experience/:exp_id",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "x-auth-token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"developer\",\r\n    \"company\": \"it\",\r\n    \"location\": \"barcelona\",\r\n    \"from\": \"1-5-2005\",\r\n    \"to\": \"1-7-2009\",\r\n    \"description\": \"a lot more\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/profile/experience/61056ef6bcd6ab4c18d2027b",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"experience",
+										"61056ef6bcd6ab4c18d2027b"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/profile/education",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "x-auth-token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"school\": \"test2\",\r\n    \"degree\": \"test2\",\r\n    \"fieldofstudy\": \"test2\",\r\n    \"from\": \"1-5-2005\",\r\n    \"current\":true,\r\n    \"description\": \"a lot more\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/profile/education",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"education"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/profile/education/:edu_id",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "x-auth-token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"developer\",\r\n    \"company\": \"it\",\r\n    \"location\": \"barcelona\",\r\n    \"from\": \"1-5-2005\",\r\n    \"to\": \"1-7-2009\",\r\n    \"description\": \"a lot more\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/profile/education/6105f0c26c1645266447452c",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"education",
+										"6105f0c26c1645266447452c"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/profile/github/githubuser",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "x-auth-token",
+										"value": "{{token}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/profile/github/ZamoraEmmanuel",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"github",
+										"ZamoraEmmanuel"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Posts",
+					"item": [
+						{
+							"name": "/post",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "x-auth-token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"text\": \"texto ejemplo de primer post test 2\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/posts",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/post",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "x-auth-token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/api/posts",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/posts/:id",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "x-auth-token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/api/posts/61098c0b5e39fc4f5ce19bcb",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"61098c0b5e39fc4f5ce19bcb"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/posts/:id",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "x-auth-token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/api/posts/61098c0b5e39fc4f5ce19bcb",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"61098c0b5e39fc4f5ce19bcb"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/posts/like/:id",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "x-auth-token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/api/posts/like/610995bfc78d37599c13bfcf",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"like",
+										"610995bfc78d37599c13bfcf"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/posts/unlike/:id",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "x-auth-token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/api/posts/unlike/610995c3c78d37599c13bfd2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"unlike",
+										"610995c3c78d37599c13bfd2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/post/comment/id",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "x-auth-token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"text\": \"comentario ejemplo de primer post test 2\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/posts/comment/610995c3c78d37599c13bfd2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"comment",
+										"610995c3c78d37599c13bfd2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/post/comment/:id/:comment_id",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "x-auth-token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"text\": \"comentario ejemplo de primer post test 2\"\r\n}"
+								},
+								"url": {
+									"raw": "{{url}}/api/posts/comment/610995c3c78d37599c13bfd2/61099e562a47e13ea010e6b5",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"posts",
+										"comment",
+										"610995c3c78d37599c13bfd2",
+										"61099e562a47e13ea010e6b5"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
